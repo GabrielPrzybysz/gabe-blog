@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Curious about Mirai Malware"
+title: "Curiosities about Mirai Malware"
 date: 2024-04-08 20:32:20 +0300
 categories: [Security, Malware]
 image:
