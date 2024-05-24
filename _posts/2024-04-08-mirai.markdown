@@ -8,20 +8,21 @@ image:
 tags: [C, Malware, DDoS]
 ---
 
-
+## Collaboration with
+- João Vitor Borba da Silva
+  
 ## Warning
 This post is not intended to encourage any illegal activity. Its purpose is to analyze the mechanisms employed by malicious attackers, serving as a cautionary measure and promoting awareness about cybersecurity. There is no intention to compromise the security of our lives (I am vehemently against any such attempts); rather, the aim is to disseminate knowledge about information technology and security. It is recommended that the content be used exclusively to enhance understanding of the subject and safeguard digital environments.
 
 ***⁠”Cybersecurity is much more than a technical issue; it’s a matter of trust.” - Jim Stickley***
 
-
 ## Intro
 
-Let's go back to the year 2016. IoTs were booming, the power of the internet could affect our lives more directly, and everything could be connected to the internet. That's perfect, it's really good that everything is connected. But let's look at this critically; the information security culture wasn't mature yet (not that it is today). The phrase I hear most often is: Why would they hack me? I'm not even important.
+Let's go back to the year 2016. IoTs were booming, the power of the internet could affect our lives more directly, and everything could be connected to the internet. That's perfect, it's really good that everything is connected. But let's look at this critically; the information security culture wasn't mature yet (not that it is today). The phrase I hear most often is: Why would they hack me? I'm not even important. 
 
 ### Mirai, the Future
 
-Mirai was a malware that self-propagated in a worm-like fashion, turning devices into part of a botnet. Attackers used brute-force attacks on public IPs, and if successful, infected the device, primarily targeting security cameras and other IoT devices based on Linux. The objective was to infect a wide range of IoT devices, from residential to corporate, even targeting critical infrastructures. Mirai made no distinction and sought to exploit any vulnerable device it encountered.
+Mirai was a malware that self-propagated in a worm-like fashion, turning devices into part of a botnet. Attackers used brute-force attacks on public IPs, and if successful, infected the device, primarily targeting security cameras and other IoT devices based on Linux. The objective was to infect a wide range of IoT devices, from residential to corporate, even targeting critical infrastructures. Mirai made no distinction and sought to exploit any vulnerable device it encountered. 
 
 Mirai was responsible for a series of high-profile attacks, including the DDoS attack against the internet service provider Dyn in October 2016. This attack led to significant disruptions in online services, affecting major platforms such as Twitter, Netflix, PayPal, and many others. Furthermore, Mirai remained a persistent threat, with new variants emerging to exploit new vulnerabilities and further expand its botnet network.
 
