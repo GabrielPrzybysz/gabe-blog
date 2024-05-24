@@ -9,7 +9,7 @@ tags: [C, Malware, DDoS]
 ---
 
 ## Collaboration with
-- João Vitor Borba da Silva
+[João Vitor Borba "Borb4"](https://www.linkedin.com/in/joaovitorborba/)
   
 ## Warning
 This post is not intended to encourage any illegal activity. Its purpose is to analyze the mechanisms employed by malicious attackers, serving as a cautionary measure and promoting awareness about cybersecurity. There is no intention to compromise the security of our lives (I am vehemently against any such attempts); rather, the aim is to disseminate knowledge about information technology and security. It is recommended that the content be used exclusively to enhance understanding of the subject and safeguard digital environments.
