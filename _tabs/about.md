@@ -4,21 +4,15 @@ icon: fas fa-info-circle
 order: 1
 ---
 
-Hey there, folks! I've been a tech enthusiast since I was ten, and I dove into the industry at the ripe old age of fourteen. I firmly believe that technology has the power to change the world, and I'm all in to be a part of that revolution! At Dark Code Club, our mission is nothing short of changing the world. We firmly believe that knowledge is the key to unlocking the future, and our blog is our vessel for this exciting journey.
-
-In a world that's constantly evolving, staying ahead of the curve is not just a choice; it's a necessity. We're dedicated to curating and sharing the latest insights, trends, and innovations in the realms of cybersecurity and backend development. But it's not just about staying informed; it's about empowering you to be a part of the transformation.
-
-We understand that technology can be complex, and the digital landscape can sometimes seem daunting. That's why we break down intricate concepts into digestible, easy-to-understand nuggets of wisdom. We're here to demystify the world of code, security, and development, making it accessible to everyone, from beginners to seasoned experts.
-
-Our goal is to ignite the flames of curiosity and inspire a passion for technology. We believe that by equipping individuals with the knowledge and tools they need, we can collectively drive innovation, secure our digital world, and pave the way for a brighter future.
-
-So, join us on this exhilarating journey of exploration, discovery, and transformation. Let's change the world together, one blog post at a time. Stay tuned to Dark Code Club Blogs for insights that will empower you to make a difference in the ever-evolving tech landscape.
-
-Knowledge is power, and together, we have the power to shape the future.
-
 ## Who Am I
 
 I'm a puzzle-solving addict, a systems architect, and a cybersecurity guy. I thrive on challenges and I'm addicted to cracking complex problems. That's what keeps me going every day.
+
+Fascinated by technology since I was ten years old, I entered the industry at fourteen. I believe technology can change the world, and I love being a part of that! My goal is to innovate. I enjoy solving complex puzzles, and that motivates me.
+
+I love designing complex systems that need to be high-performance, resilient, with a focus on security and scalability. Currently, I focus my studies on implementing security frameworks and best practices, as well as analyzing and mitigating system vulnerabilities. I develop information security policies and procedures, ensuring that the implemented solutions are in line with industry standards and regulations.
+
+Additionally, I am deeply involved with cloud computing technologies, developing scalable and secure solutions for data storage and processing in the cloud. I work on creating robust APIs and continuously improving back-end architecture to ensure the resilience and efficiency of systems.
 
 ## What Drives Me
 
