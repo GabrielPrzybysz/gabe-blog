@@ -1,7 +1,7 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 1
+layout: about
+icon: fas fa-archive
+order: 4
 ---
 
 ## Who Am I
