@@ -55,15 +55,6 @@ The study was done using an Arduino UNO, thus making one of its two microcontrol
  - [x] Capacitor 100nF
  - [x] Cable Usb 2.0 A/b - Arduino Uno
 
-
-
-# Wire up Arduino Uno
-
--   Follow the image:
-
-
-![](https://lh6.googleusercontent.com/ebd-WA4LsjPmLMr_DUwZ4H7bPtmUyPkVGWdaHdyh5LhEovUpLOdO7Oyv3_k7IgnnTp9TCkFyURe3gAYyhk3OQljqjXMvYMSAp11maWL4YlGuil0T7M3gMq-WrqumqCyHp7epoTNj)
-
 # What is HoodLoader2
 
 
