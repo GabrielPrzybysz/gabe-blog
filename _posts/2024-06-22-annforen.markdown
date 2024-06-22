@@ -2,10 +2,10 @@
 layout: post
 title: "Forensic Investigation: Solving Ann's Bad AIM Case with Wireshark"
 date: 2024-06-22 00:10:20 +0300
-categories: [Security, Forensis]
+categories: [Security, Forensics]
 image:
   path: /assets/img/ann-1.jpg
-tags: [Security, Forensis]
+tags: [Security, Forensics]
 ---
 
 ### I'm BACK
