@@ -1,0 +1,103 @@
+---
+layout: post
+title: Forensic Investigation: Solving Ann's Bad AIM Case with Wireshark
+date: 2023-09-01 20:32:20 +0300
+categories: [Security, Forensis]
+image:
+  path: /assets/img/ann-1.png
+tags: [Security, Forensis]
+---
+
+### I'm BACK
+
+I'm very happy to be back. I hope you missed me. I've been up to some cool stuff outside of here. But let's get to it; the idea isn't to talk about me but about forensics.
+
+### Scenario
+
+Anarchy-R-Us, Inc. suspects that one of their employees, Ann Dercover, is actually a secret agent working for their competitor. Ann has access to the company’s prize asset, the secret recipe. Security staff are concerned that Ann might try to leak the recipe.
+
+Security staff have been monitoring Ann’s activity but haven’t found anything suspicious – until now. Today, an unexpected laptop briefly appeared on the company's wireless network. Staff hypothesize it may have been someone in the parking lot, as no strangers were seen in the building. Ann’s computer (192.168.1.158) sent IMs over the wireless network to this laptop. The rogue laptop disappeared shortly thereafter.
+
+“We have a packet capture of the activity,” said security staff, “but we can’t figure out what’s going on. Can you help?”
+
+You are the forensic investigator. Your mission is to figure out who Ann was IM-ing, what she sent, and recover evidence including:
+
+1. What is the name of Ann’s IM buddy?
+2. What was the first comment in the captured IM conversation?
+3. What is the name of the file Ann transferred?
+4. What is the magic number of the file you want to extract (first four bytes)?
+5. What was the MD5sum of the file?
+6. What is the secret recipe?
+
+### Tools
+
+We'll only use Wireshark. Let's test our knowledge by diving into the sea of sharks.
+
+### Holmes, Sherlock Holmes
+
+Like every Holmes needs his Watson, I'll be searching with my longtime partner, KALI LINUX. Yes, I consider it my great friend. With the environment clarified, let's get started.
+
+### Tell me your name
+
+We know Ann's IP, so let's start with a simple filter, looking only for her IP. The pcap is tiny; searching this way will save initial time thinking of something more sophisticated. "But source or destination?" it doesn't matter; we just want to see the communication, a skeleton; we want to look at all the packets and feel the breeze on our faces. We know that probably we'll find another IP on the network communicating with Ann's, the damn laptop connected to wifi. But for now, let's focus on IMs; there we'll likely find some information on her partner in crime (or something like a name). Some addresses can be quickly dismissed, like broadcast. But others... We have two addresses that interest me a lot here. Given the scope of the challenge, them being on the same network suggests they have similar IPs, so let's search for something like a subnet mask 255.255.255.0, or, if we want to be ultra-maniacal, something like 255.255.0.0. Spoiler, the first option solves the challenge. Maybe this isn't realistic in the real world, but let's play along. We mostly have TCP and SSL communication. We know our recipe thief communicated several times with an IP within our expected range, 192.168.1.159. BUT, she also communicated extensively with IP 62.12.24.50; that's interesting, an external IP, not part of our local network. So, let's choose that to start. Following one of the TCP/SSL streams, we immediately see our answer, in fact, two of our answers.
+
+1. What is the name of Ann’s IM buddy? What was the first comment in the captured IM conversation?
+
+In one of the first packets, we see something like a nickname and a VERY suggestive message.
+
+Sec558user1....  Here's the secret recipe... I just downloaded it from the file server. Just copy to a thumb drive and you're good to go >:-).
+
+![image](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/3a2d12f7-9781-4336-b51f-27a4d3ef94e2)
+
+
+LOOK HOW NICE, isn't it? In my opinion, this warrants immediate dismissal. But it's good; we have some interesting things to discuss:
+
+1. Your partner in crime is terrible at cool hacker names.
+2. The IP 62.12.24.50 seems to be where the IMs are coming and going. 
+3. She really attacked her own company.
+4. And we have a file server, but what could be its IP?
+
+### The recipe
+
+We have a few considerations so far; at least we have 3 internal IPs, Ann's, the laptop that connected to wifi, and the file server. So now, let's look at the other internal IP we saw communication with, 192.168.1.159. I believe this is the laptop connected to the wifi. Let's try to understand the relationship between the two by looking at the packets; we have few and all are TCP. After the handshake, we see something very interesting; in the first packet after, we have a VERY SIGNIFICANT payload. The payload starts with the sequence "OFT2," which may indicate an identifier or specific command within the protocol or application in use. The reference to the filename "recipe.docx" is still present at the end of the dump, showing that this information is also part of the transmitted payload. BINGO, we have two more answers, the filename recipe.docx and 4. What is the magic number of the file you want to extract (first four bytes)? The first 4 bytes are the character sequence OFT2, so let's talk about that. But with this analysis, we can also see that a large amount of data was from Ann's host to the final 159, so we know the file was from Ann's host to this other host. This makes it even clearer that 192.168.1.159 is the laptop connected to the wifi. Now we have two paths to follow:
+
+1. See what communication the Ann's host made that isn't for host 159 or the IP where the IMs were going; by excluding this, we have some options of hosts to be the file server IP (where the recipe was). This IP may or may not be local, but let's assume a subnet mask 255.255.255.0; if anything fits this mask, we'll pay special attention.
+
+2. Look at who communicated with host 192.168.1.159 that isn't Ann.
+
+Let's start with the first option...
+
+### From where to where
+
+After a while searching, I didn't find any communication from Ann's IP to the file server. BUT, on the other hand, we found some interesting communications, especially from IP 192.168.1.157; it screams in broadcast, and in one of these shouts, we found a clear reference to SMB. So we can assume that Ann possibly downloaded the recipe from the IP ending with 157.
+
+![image-1](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/b7c11f8e-6267-41b9-b603-c92386bacdbc)
+
+
+Now, let's look at who communicated with host 159. We have some HTTP communications, confirming that the nickname of the fool is Sec558user1:
+
+Referer: http://www.aim.com/redirects/inclient/AIM_UAC_v2.adp?magic=93245558&width=120&height=90&sn=Sec558user1
+
+![image-2](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/74d28e02-81e9-4c46-ada3-aac81b0c6359)
+
+But nothing beyond that interests us in this context. I could even make a list of hosts that Sec558user1's laptop communicated with while connected, but I don't think it makes much sense in this context. But in the real world, it would be a good starting point to see which company is doing this espionage; if any of the communication IPs were from a known competitor or something similar, the possibilities are varied.
+
+## The fall of Krusty Krab
+
+Okay, okay, I know, I've been stalling; I could have gotten the recipe file a while ago, but I like to drag it out; it's my ninja way. So hold onto your chair, call grandma because I'm about to give you the recipe.
+
+Well, we know the message is a .oft file; if you want to know more about all this, GO READ THE DOCUMENTATION. Here I'll be more direct, but I spent a good amount of time reading and rereading this until I went bald. When we ask Wireshark to follow the TCP stream, it brings everything it streamed. Based on this, we made a raw to .oft converter using a C structure I found on the internet in the .oft protocol (it's in my gist). And BADABOOM, here's our recipe:
+
+Recipe for Disaster:
+1 serving
+Ingredients:
+4 cups sugar
+2 cups water
+In a medium saucepan, bring the water to a boil. Add sugar. Stir gently over low heat until sugar is fully dissolved. Remove the saucepan from heat. Allow to cool completely. Pour into gas tank. Repeat as necessary.
+
+8350582774e1d4dbe1d61d64c89e0ea1  recipe.docx
+
+### Incident Flow chart
+
+![Untitled - Frame 1](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/bbc7256a-96ac-40c9-8a17-61b17a1bdd88)
+
