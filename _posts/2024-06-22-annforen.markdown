@@ -31,10 +31,10 @@ You are the forensic investigator. Your mission is to figure out who Ann was IM-
 
 ### Tools
 
-We'll only use Wireshark. Let's test our knowledge by diving into the sea of sharks.
+#### Wireshark 
+Let's test our knowledge by diving into the sea of sharks.
 
-### Holmes, Sherlock Holmes
-
+#### Holmes, Sherlock Holmes
 Like every Holmes needs his Watson, I'll be searching with my longtime partner, KALI LINUX. Yes, I consider it my great friend. With the environment clarified, let's get started.
 
 ### Tell me your name
@@ -102,4 +102,6 @@ In a medium saucepan, bring the water to a boil. Add sugar. Stir gently over low
 ![Untitled - Frame 1](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/bbc7256a-96ac-40c9-8a17-61b17a1bdd88)
 
 oft.c -> https://gist.github.com/GabrielPrzybysz/39075947a36030221e5a4f3bf95e3211
+
+puzzle -> https://forensicscontest.com/puzzles
 
