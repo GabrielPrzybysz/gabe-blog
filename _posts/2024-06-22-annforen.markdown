@@ -101,3 +101,5 @@ In a medium saucepan, bring the water to a boil. Add sugar. Stir gently over low
 
 ![Untitled - Frame 1](https://github.com/GabrielPrzybysz/gabe-blog/assets/45472156/bbc7256a-96ac-40c9-8a17-61b17a1bdd88)
 
+oft.c -> https://gist.github.com/GabrielPrzybysz/39075947a36030221e5a4f3bf95e3211
+
